@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using JobWorkerSdk.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +28,7 @@ namespace JobWorkerSdk
         {
             var startup = Activator.CreateInstance<T>();
             Instance.HostBuilder = CreateHostBuilder(startup);
-            
+
             return Instance;
         }
 
@@ -39,8 +40,9 @@ namespace JobWorkerSdk
                     .ReadFrom.Configuration(hostContext.Configuration))
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddTransient<IJobRunner, FakeJobRunner>();
-                    
+                    if (services.All(s => s.ImplementationType != typeof(IJobRunner)))
+                        services.AddTransient<IJobRunner, FakeJobRunner>();
+
                     startup.Configure(services, hostContext.Configuration);
                     services.AddHostedService<BackgroundJob>();
                 });

@@ -16,12 +16,20 @@ namespace JobWorkerSdk
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            await Task.FromResult<>(_logger.LogInformation("Worker is starting..."));
+            _logger.LogInformation("Worker is starting...");
+            await Task.Delay(0, cancellationToken);
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
         {
-            await Task.FromResult<>(_logger.LogInformation("...Worker is stopped"));
+            _logger.LogInformation("...Worker is stopped");
+            await Task.Delay(0, cancellationToken);
+        }
+
+        public async Task TickAsync(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Worker is running, but it does nothing ¯\\_(ツ)_/¯");
+            await Task.Delay(10000, cancellationToken);
         }
     }
 }

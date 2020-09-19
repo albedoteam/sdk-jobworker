@@ -7,5 +7,8 @@ namespace JobWorkerSdk.Configuration
     {
         Task StartAsync(CancellationToken cancellationToken);
         Task StopAsync(CancellationToken cancellationToken);
+        Task TickAsync(CancellationToken cancellationToken);
     }
+    
+    
 }

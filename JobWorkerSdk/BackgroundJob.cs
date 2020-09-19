@@ -21,12 +21,9 @@ namespace JobWorkerSdk
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             await _jobRunner.StartAsync(new CancellationTokenSource(TimeSpan.FromSeconds(10)).Token);
-            
+
             while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Worker is running, but it does nothing ¯\\_(ツ)_/¯");
-                await Task.Delay(10000, stoppingToken);
-            }
+                await _jobRunner.TickAsync(stoppingToken);
 
             await _jobRunner.StopAsync(stoppingToken);
         }
