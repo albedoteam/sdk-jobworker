@@ -5,11 +5,11 @@ using Microsoft.Extensions.Logging;
 
 namespace JobWorkerSdk
 {
-    public class FakeJobRunner : IJobRunner
+    public class ShrugJobRunner : IJobRunner
     {
-        private readonly ILogger<FakeJobRunner> _logger;
+        private readonly ILogger<ShrugJobRunner> _logger;
 
-        public FakeJobRunner(ILogger<FakeJobRunner> logger)
+        public ShrugJobRunner(ILogger<ShrugJobRunner> logger)
         {
             _logger = logger;
         }

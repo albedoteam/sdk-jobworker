@@ -36,12 +36,13 @@ namespace JobWorkerSdk
         {
             return Host.CreateDefaultBuilder()
                 .UseWindowsService()
+                // .UseSystemd() --> use this when dockerized
                 .UseSerilog((hostContext, loggerConfiguration) => loggerConfiguration
                     .ReadFrom.Configuration(hostContext.Configuration))
                 .ConfigureServices((hostContext, services) =>
                 {
                     if (services.All(s => s.ImplementationType != typeof(IJobRunner)))
-                        services.AddTransient<IJobRunner, FakeJobRunner>();
+                        services.AddTransient<IJobRunner, ShrugJobRunner>();
 
                     startup.Configure(services, hostContext.Configuration);
                     services.AddHostedService<BackgroundJob>();
