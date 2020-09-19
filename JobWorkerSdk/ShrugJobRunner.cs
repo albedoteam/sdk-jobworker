@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using JobWorkerSdk.Configuration;
 using JobWorkerSdk.Configuration.Abstractions;
 using Microsoft.Extensions.Logging;
 
