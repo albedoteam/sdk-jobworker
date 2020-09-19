@@ -9,6 +9,4 @@ namespace JobWorkerSdk.Configuration
         Task StopAsync(CancellationToken cancellationToken);
         Task TickAsync(CancellationToken cancellationToken);
     }
-    
-    
 }
