@@ -1,4 +1,4 @@
-namespace JobWorkerSdk.Configuration
+namespace JobWorkerSdk.Configuration.Abstractions
 {
     public interface IWorkerRunner
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using JobWorkerSdk.Configuration;
+using JobWorkerSdk.Configuration.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
