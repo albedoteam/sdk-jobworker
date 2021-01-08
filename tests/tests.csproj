@@ -5,7 +5,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>albedoteam-sdk-jobworker-tests</AssemblyName>
+        <AssemblyName>AlbedoTeam.Sdk.JobWorker.Tests</AssemblyName>
 
         <RootNamespace>AlbedoTeam.Sdk.JobWorker.Tests</RootNamespace>
     </PropertyGroup>
