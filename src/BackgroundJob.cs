@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using JobWorkerSdk.Configuration.Abstractions;
+using AlbedoTeam.Sdk.JobWorker.Configuration.Abstractions;
 using Microsoft.Extensions.Hosting;
 
-namespace JobWorkerSdk
+namespace AlbedoTeam.Sdk.JobWorker
 {
     internal class BackgroundJob : BackgroundService
     {

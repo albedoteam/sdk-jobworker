@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JobWorkerSdk.Configuration.Abstractions
+namespace AlbedoTeam.Sdk.JobWorker.Configuration.Abstractions
 {
     public interface IWorkerConfigurator
     {
