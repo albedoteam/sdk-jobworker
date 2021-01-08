@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>AlbedoTeam.Sdk.JobWorker</RootNamespace>
-        <AssemblyName>albedoteam-sdk-jobworker</AssemblyName>
+        <AssemblyName>AlbedoTeam.Sdk.JobWorker</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
