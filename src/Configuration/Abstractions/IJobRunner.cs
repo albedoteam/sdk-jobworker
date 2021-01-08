@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace JobWorkerSdk.Configuration.Abstractions
+namespace AlbedoTeam.Sdk.JobWorker.Configuration.Abstractions
 {
     public interface IJobRunner
     {

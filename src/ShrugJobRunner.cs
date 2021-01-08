@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using JobWorkerSdk.Configuration.Abstractions;
+using AlbedoTeam.Sdk.JobWorker.Configuration.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace JobWorkerSdk
+namespace AlbedoTeam.Sdk.JobWorker
 {
     public class ShrugJobRunner : IJobRunner
     {

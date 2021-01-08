@@ -1,4 +1,4 @@
-namespace JobWorkerSdk.Configuration.Abstractions
+namespace AlbedoTeam.Sdk.JobWorker.Configuration.Abstractions
 {
     public interface IWorkerRunner
     {

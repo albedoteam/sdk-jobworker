@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using JobWorkerSdk.Configuration.Abstractions;
+using AlbedoTeam.Sdk.JobWorker.Configuration.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace JobWorkerSdk
+namespace AlbedoTeam.Sdk.JobWorker
 {
     public class Worker : IWorkerRunner
     {
