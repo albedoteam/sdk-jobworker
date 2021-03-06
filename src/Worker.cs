@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using AlbedoTeam.Sdk.JobWorker.Configuration.Abstractions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -37,6 +38,13 @@ namespace AlbedoTeam.Sdk.JobWorker
             return Host.CreateDefaultBuilder()
                 //.UseWindowsService()
                 .UseSystemd() // --> use this when dockerized
+                .ConfigureAppConfiguration((hostContext, builder) =>
+                {
+                    if (hostContext.HostingEnvironment.IsDevelopment())
+                    {
+                        builder.AddUserSecrets<Worker>();
+                    }
+                })
                 .UseSerilog((hostContext, loggerConfiguration) =>
                 {
                     loggerConfiguration.ReadFrom.Configuration(hostContext.Configuration);
