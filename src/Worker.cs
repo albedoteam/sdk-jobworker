@@ -35,10 +35,12 @@ namespace AlbedoTeam.Sdk.JobWorker
         private static IHostBuilder CreateHostBuilder(IWorkerConfigurator startup)
         {
             return Host.CreateDefaultBuilder()
-                .UseWindowsService()
-                // .UseSystemd() --> use this when dockerized
-                .UseSerilog((hostContext, loggerConfiguration) => loggerConfiguration
-                    .ReadFrom.Configuration(hostContext.Configuration))
+                //.UseWindowsService()
+                .UseSystemd() // --> use this when dockerized
+                .UseSerilog((hostContext, loggerConfiguration) =>
+                {
+                    loggerConfiguration.ReadFrom.Configuration(hostContext.Configuration);
+                })
                 .ConfigureServices((hostContext, services) =>
                 {
                     if (services.All(s => s.ImplementationType != typeof(IJobRunner)))
