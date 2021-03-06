@@ -28,22 +28,18 @@ namespace AlbedoTeam.Sdk.JobWorker
         public static Worker Configure<T>() where T : class, IWorkerConfigurator
         {
             var startup = Activator.CreateInstance<T>();
-            Instance.HostBuilder = CreateHostBuilder(startup);
+            Instance.HostBuilder = CreateHostBuilder<T>(startup);
 
             return Instance;
         }
 
-        private static IHostBuilder CreateHostBuilder(IWorkerConfigurator startup)
+        private static IHostBuilder CreateHostBuilder<T>(IWorkerConfigurator startup) where T : class
         {
             return Host.CreateDefaultBuilder()
-                //.UseWindowsService()
-                .UseSystemd() // --> use this when dockerized
+                .UseSystemd()
                 .ConfigureAppConfiguration((hostContext, builder) =>
                 {
-                    if (hostContext.HostingEnvironment.IsDevelopment())
-                    {
-                        builder.AddUserSecrets<Worker>();
-                    }
+                    builder.AddUserSecrets<T>();
                 })
                 .UseSerilog((hostContext, loggerConfiguration) =>
                 {
