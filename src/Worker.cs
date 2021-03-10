@@ -25,21 +25,23 @@ namespace AlbedoTeam.Sdk.JobWorker
             HostBuilder.Build().Run();
         }
 
-        public static Worker Configure<T>() where T : class, IWorkerConfigurator
+        public static Worker Configure<T>(bool addUserSecrets = true) where T : class, IWorkerConfigurator
         {
             var startup = Activator.CreateInstance<T>();
-            Instance.HostBuilder = CreateHostBuilder<T>(startup);
+            Instance.HostBuilder = CreateHostBuilder<T>(startup, addUserSecrets);
 
             return Instance;
         }
 
-        private static IHostBuilder CreateHostBuilder<T>(IWorkerConfigurator startup) where T : class
+        private static IHostBuilder CreateHostBuilder<T>(IWorkerConfigurator startup, bool addUserSecrets)
+            where T : class
         {
             return Host.CreateDefaultBuilder()
                 .UseSystemd()
                 .ConfigureAppConfiguration((hostContext, builder) =>
                 {
-                    builder.AddUserSecrets<T>();
+                    if (addUserSecrets)
+                        builder.AddUserSecrets<T>();
                 })
                 .UseSerilog((hostContext, loggerConfiguration) =>
                 {
